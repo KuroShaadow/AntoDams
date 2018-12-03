@@ -5,7 +5,7 @@ public class PlancheDomino extends Planche {
 		super(30, 30);
 
 		for (int i = 0; i <= 6; i++)
-			for (int j = 0; j <= 6; j++)
+			for (int j = 0; j <= i; j++)
 				this.pioche.add(new CaseDomino(new Lien(i), new Lien(j)));
 	}
 
