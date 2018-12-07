@@ -1,3 +1,6 @@
+package main;
+
+import main.planche.PlancheDomino;
 
 public class Main {
 	public static void main(String[] args) {

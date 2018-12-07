@@ -1,3 +1,8 @@
+package main.planche;
+
+import main.Joueur;
+import main.box.BoxDomino;
+import main.lien.LienDomino;
 
 public class PlancheDomino extends Planche {
 
@@ -6,7 +11,7 @@ public class PlancheDomino extends Planche {
 
 		for (int i = 0; i <= 6; i++)
 			for (int j = 0; j <= i; j++)
-				this.pioche.add(new CaseDomino(new Lien(i), new Lien(j)));
+				this.pioche.add(new BoxDomino(new LienDomino(i), new LienDomino(j)));
 	}
 
 	@Override
@@ -34,17 +39,17 @@ public class PlancheDomino extends Planche {
 		 * joueurs.get(0).pioche(pioche());
 		 */
 		
-		CaseDomino dom1 = new CaseDomino(new Lien(0), new Lien(0));
-		CaseDomino dom2 = new CaseDomino(new Lien(0), new Lien(1));
-		CaseDomino dom3 = new CaseDomino(new Lien(1), new Lien(2));
-		CaseDomino dom4 = new CaseDomino(new Lien(0), new Lien(0));
+		BoxDomino dom1 = new BoxDomino(new LienDomino(0), new LienDomino(0));
+		BoxDomino dom2 = new BoxDomino(new LienDomino(0), new LienDomino(1));
+		BoxDomino dom3 = new BoxDomino(new LienDomino(1), new LienDomino(2));
+		BoxDomino dom4 = new BoxDomino(new LienDomino(0), new LienDomino(0));
 
 		System.out.println(dom2.estAjoutable(dom1, 2, 1));
 		if (dom2.estAjoutable(dom1, 2, 1))
 			dom2.ajout(dom1, 2, 1);
-		System.out.println(dom3.estAjoutable(dom2.getCase2(), 1, 2));
-		if (dom3.estAjoutable(dom2.getCase2(), 1, 2))
-			dom3.ajout(dom2.getCase2(), 1, 2);
+		System.out.println(dom3.estAjoutable(dom2.getBox2(), 1, 2));
+		if (dom3.estAjoutable(dom2.getBox2(), 1, 2))
+			dom3.ajout(dom2.getBox2(), 1, 2);
 		System.out.println(dom4.estAjoutable(dom1, 0, 0));
 		if (dom4.estAjoutable(dom1, 0, 0))
 			dom4.ajout(dom1, 0, 0);

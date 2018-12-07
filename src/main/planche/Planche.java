@@ -1,21 +1,26 @@
+package main.planche;
+
 import java.util.ArrayList;
 
+import main.Joueur;
+import main.box.Box;
+
 public abstract class Planche {
-	protected Case[][] tableau;
+	protected Box[][] tableau;
 	protected ArrayList<Joueur> joueurs;
-	protected ArrayList<Case> pioche;
+	protected ArrayList<Box> pioche;
 
 	public Planche(int hauteur, int largeur) {
-		this.tableau = new Case[hauteur][largeur];
+		this.tableau = new Box[hauteur][largeur];
 		this.joueurs = new ArrayList<Joueur>();
-		this.pioche = new ArrayList<Case>();
+		this.pioche = new ArrayList<Box>();
 	}
 
 	public void addJoueur(Joueur joueur) {
 		joueurs.add(joueur);
 	}
 
-	public Case pioche() {
+	public Box pioche() {
 		int nb = (int) (Math.random() * pioche.size());
 		pioche.remove(nb);
 		return pioche.get(nb);
@@ -25,7 +30,7 @@ public abstract class Planche {
 
 	abstract public void partie();
 
-	public Case[][] getTableau() {
+	public Box[][] getTableau() {
 		return tableau;
 	}
 }
