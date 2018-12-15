@@ -1,8 +1,9 @@
+package main.lien;
 
-public class Lien {
+public class LienDomino {
 	private int nombre;
 
-	public Lien(int nombre) {
+	public LienDomino(int nombre) {
 		this.nombre = nombre;
 	}
 
