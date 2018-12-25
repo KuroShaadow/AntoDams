@@ -20,4 +20,8 @@ public class LienDomino {
 	public boolean equals(Object obj) {
 		return toString().equals(obj.toString());
 	}
+	
+	public Object getLien() {
+		return this.getLien();
+	}
 }

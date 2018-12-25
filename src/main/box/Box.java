@@ -51,4 +51,8 @@ public class Box {
 	public int getNbLiensMax() {
 		return this.nbLiensMax;
 	}
+	
+	public Object getLien() {
+		return this.lien;
+	}
 }
