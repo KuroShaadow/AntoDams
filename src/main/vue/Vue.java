@@ -1,5 +1,6 @@
 package main.vue;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
@@ -15,7 +16,7 @@ class Vue extends JFrame {
 	
 	public Vue(Planche planche) {
 		this.pack();
-		this.setSize(1920, 1080);
+		this.setLayout(new BorderLayout());
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.planche = planche;

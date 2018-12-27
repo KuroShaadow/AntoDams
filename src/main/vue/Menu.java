@@ -1,6 +1,7 @@
 package main.vue;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -13,7 +14,7 @@ import main.planche.PlancheDomino;
 public class Menu extends JFrame {
 	public Menu(){
 		this.pack();
-		this.setSize(1920, 1080);
+		this.setPreferredSize(new Dimension());
 		this.setVisible(true);
 		this.setTitle("Menu");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,11 +1,15 @@
 package main;
 
-import main.planche.PlancheDomino;
+import java.awt.EventQueue;
+
+import main.vue.Menu;
 
 public class Main {
 	public static void main(String[] args) {
-		PlancheDomino planche = new PlancheDomino();
-		
-		planche.partie();
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				Menu menu = new Menu();
+			}
+		});
 	}
 }
