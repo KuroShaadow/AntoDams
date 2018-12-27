@@ -1,15 +1,16 @@
 package main.vue;
 
+import javax.swing.JPanel;
+
 import main.box.BoxDomino;
 import main.lien.LienDomino;
 import main.planche.PlancheDomino;
 
 @SuppressWarnings("serial")
-public class VueDomino extends Vue {
+public class VueDomino extends Vue {	
 	public VueDomino(PlancheDomino planche) {
 		super(planche);
 		this.setTitle("Table Domino");
-		this.partie();
 	}
 	
 	public void addDomino(int x, int y, BoxDomino box) {
@@ -25,7 +26,5 @@ public class VueDomino extends Vue {
 					this.addDomino(i, j, (BoxDomino) this.planche.getTableau()[i][j]);
 			}
 		}
-		
-		
 	}
 }

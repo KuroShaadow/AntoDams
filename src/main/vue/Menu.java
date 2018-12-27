@@ -14,7 +14,7 @@ import main.planche.PlancheDomino;
 public class Menu extends JFrame {
 	public Menu(){
 		this.pack();
-		this.setPreferredSize(new Dimension());
+		this.setSize(new Dimension(1920, 1080));
 		this.setVisible(true);
 		this.setTitle("Menu");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
