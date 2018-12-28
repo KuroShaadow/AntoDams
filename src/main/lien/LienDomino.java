@@ -1,6 +1,6 @@
 package main.lien;
 
-public class LienDomino {
+public class LienDomino extends Lien {
 	private int nombre;
 
 	public LienDomino(int nombre) {
@@ -14,14 +14,5 @@ public class LienDomino {
 	@Override
 	public String toString() {
 		return ""+nombre;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		return toString().equals(obj.toString());
-	}
-	
-	public Object getLien() {
-		return this.getLien();
 	}
 }
