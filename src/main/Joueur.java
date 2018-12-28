@@ -16,4 +16,8 @@ public class Joueur {
 	public void pioche(Box domino) {
 		main.add(domino);
 	}
+	
+	public ArrayList<Box> getMain() {
+		return this.main;
+	}
 }
