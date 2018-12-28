@@ -40,7 +40,7 @@ public class VueDomino extends Vue {
 					this.plateau[i][j] = new ImagePan("Images/Dice" + (LienDomino) ((BoxDomino) this.planche.getTableau()[i][j]).getLien() + ".png");
 			}
 		}
-		Joueur joueur = this.planche.getCourant();
+		Joueur joueur = this.planche.getJoueurs().get(this.planche.getCourant());
 		maPioche.removeAll();
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;

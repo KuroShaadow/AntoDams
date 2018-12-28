@@ -37,7 +37,6 @@ public class InfoPartie extends JFrame {
 			this.planche.addJoueur(new Joueur(nomJoueur2.getText()));
 			
 			VueDomino vue = new VueDomino((PlancheDomino) this.planche);
-			vue.suivant();
 			vue.updateVue();
 			this.setVisible(false);
 		});
