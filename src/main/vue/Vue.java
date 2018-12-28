@@ -20,9 +20,8 @@ abstract class Vue extends JFrame {
 	protected JPanel[][] plateau;
 	protected JPanel maPioche;
 	protected ArrayList<JPanel[]> maMain;
-	protected Joueur joueur;
 
-	public Vue(Planche planche, Joueur joueur) {
+	public Vue(Planche planche) {
 		this.pack();
 		this.setSize(new Dimension(1920, 1080));
 		this.setPreferredSize(new Dimension(1920, 1080));
@@ -30,14 +29,14 @@ abstract class Vue extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// chaque joueur a sa propre vue
-		this.joueur = joueur;
 		this.planche = planche;
 
 		// on créé la table et le plateau
 		initTable();
 
 		// on initialise la pioche du joueur sous fomre graphique
-		initPioche();
+		this.maPioche = new JPanel();
+		updateVue();
 
 		// separation de la table et de la pioche
 		this.setLayout(new GridBagLayout());
@@ -55,6 +54,10 @@ abstract class Vue extends JFrame {
 		c.fill = GridBagConstraints.BOTH;
 		this.add(maPioche, c);
 	}
+	
+	public void suivant() {
+		this.planche.suivant();
+	}
 
 	public void initTable() {
 		this.table = new JPanel();
@@ -65,11 +68,11 @@ abstract class Vue extends JFrame {
 
 	public void initPlateau() {
 		this.plateau = new JPanel[this.planche.getTableau().length][this.planche.getTableau()[0].length];
-		for (int i = -1; i < this.planche.getTableau().length + 1; i++) {
-			for (int j = -1; j < this.planche.getTableau()[0].length + 1; j++) {
+		for (int i = -1; i < this.plateau.length + 1; i++) {
+			for (int j = -1; j < this.plateau[0].length + 1; j++) {
 				JPanel box = new JPanel();
-				if (i == -1 || i == this.planche.getTableau().length || j == -1
-						|| j == this.planche.getTableau()[0].length) {
+				if (i == -1 || i == this.plateau.length || j == -1
+						|| j == this.plateau[0].length) {
 					box.setBackground(Color.DARK_GRAY);
 				} else {
 					this.plateau[i][j] = box;
@@ -79,5 +82,5 @@ abstract class Vue extends JFrame {
 		}
 	}
 
-	abstract void initPioche();
+	abstract void updateVue();
 }

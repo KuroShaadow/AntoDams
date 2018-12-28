@@ -20,4 +20,9 @@ public class Joueur {
 	public ArrayList<Box> getMain() {
 		return this.main;
 	}
+	
+	@Override
+	public String toString() {
+		return this.nom;
+	}
 }

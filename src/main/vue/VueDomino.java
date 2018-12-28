@@ -12,8 +12,8 @@ import main.planche.PlancheDomino;
 
 @SuppressWarnings("serial")
 public class VueDomino extends Vue {
-	public VueDomino(PlancheDomino planche, Joueur joueur) {
-		super(planche, joueur);
+	public VueDomino(PlancheDomino planche) {
+		super(planche);
 		this.setTitle("Table Domino");
 	}
 
@@ -33,18 +33,24 @@ public class VueDomino extends Vue {
 	}
 	
 	@Override
-	public void initPioche() {
-		this.maPioche = new JPanel();
+	public void updateVue() {
+		for(int i = 0; i < this.plateau.length; i++) {
+			for(int j = 0; j < this.plateau[0].length; j++) {
+				if(this.planche.getTableau()[i][j] != null)
+					this.plateau[i][j] = new ImagePan("Images/Dice" + (LienDomino) ((BoxDomino) this.planche.getTableau()[i][j]).getLien() + ".png");
+			}
+		}
+		Joueur joueur = this.planche.getCourant();
+		maPioche.removeAll();
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;
 		c.gridwidth = 2;
-		c.gridheight = this.joueur.getMain().size();
 		c.weightx = 2;
 		c.weighty = 1;
-		maPioche.add(new JLabel("Ma pioche"), c);
-		for (int i = 0; i < this.joueur.getMain().size(); i++) {
-			LienDomino l1 = (LienDomino) ((BoxDomino) this.joueur.getMain().get(i)).getLien();
-			LienDomino l2 = (LienDomino) (((BoxDomino) this.joueur.getMain().get(i)).getBox2()).getLien();
+		maPioche.add(new JLabel("Pioche de " + joueur.toString()), c);
+		for (int i = 0; i < joueur.getMain().size(); i++) {
+			LienDomino l1 = (LienDomino) ((BoxDomino) joueur.getMain().get(i)).getLien();
+			LienDomino l2 = (LienDomino) (((BoxDomino) joueur.getMain().get(i)).getBox2()).getLien();
 			this.maMain.add(new JPanel[] { new ImagePan("Images/Dice" + l1.getNombre() + ".png"),
 					new ImagePan("Images/Dice" + l2.getNombre() + ".png") });
 			for (int j = 0; j < 2; j++) {
