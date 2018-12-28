@@ -1,11 +1,13 @@
 package main.box;
 
+import main.lien.Lien;
+
 public class Box {
 	private Box[] boxLiees;
 	private int nbLiensMax;
-	protected Object lien;
+	protected Lien lien;
 
-	public Box(int nbLiensMax, Object lien) {
+	public Box(int nbLiensMax, Lien lien) {
 		this.boxLiees = new Box[4];
 		this.nbLiensMax = nbLiensMax;
 		this.lien = lien;
@@ -52,7 +54,7 @@ public class Box {
 		return this.nbLiensMax;
 	}
 	
-	public Object getLien() {
+	public Lien getLien() {
 		return this.lien;
 	}
 }
