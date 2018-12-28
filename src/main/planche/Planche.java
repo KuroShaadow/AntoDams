@@ -9,7 +9,7 @@ public abstract class Planche {
 	protected Box[][] tableau;
 	protected ArrayList<Joueur> joueurs;
 	protected ArrayList<Box> pioche;
-	protected Joueur joueurCourant;
+	protected int joueurCourant;
 
 	public Planche(int hauteur, int largeur) {
 		this.tableau = new Box[hauteur][largeur];
@@ -18,8 +18,6 @@ public abstract class Planche {
 	}
 
 	public void addJoueur(Joueur joueur) {
-		if(joueurs.isEmpty())
-			this.joueurCourant = joueur;
 		joueurs.add(joueur);
 	}
 
@@ -41,11 +39,11 @@ public abstract class Planche {
 		return this.joueurs;
 	}
 	
-	public Joueur getCourant() {
+	public int getCourant() {
 		return this.joueurCourant;
 	}
 	
-	public void suivant() {
-		this.joueurCourant = this.joueurs.get(this.joueurs.indexOf(this.joueurCourant) + 1);
+	public void setCourant(int i) {
+		this.joueurCourant = i;
 	}
 }

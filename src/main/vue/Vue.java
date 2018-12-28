@@ -54,10 +54,6 @@ abstract class Vue extends JFrame {
 		c.fill = GridBagConstraints.BOTH;
 		this.add(maPioche, c);
 	}
-	
-	public void suivant() {
-		this.planche.suivant();
-	}
 
 	public void initTable() {
 		this.table = new JPanel();
