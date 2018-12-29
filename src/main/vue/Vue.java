@@ -21,8 +21,9 @@ abstract class Vue extends JFrame {
 	protected JPanel maPioche;
 	protected ArrayList<JPanel[]> maMain;
 
-	public Vue(Planche planche) {
+	public Vue(Planche planche, String titre) {
 		this.pack();
+		this.setTitle(titre);
 		this.setSize(new Dimension(1920, 1080));
 		this.setPreferredSize(new Dimension(1920, 1080));
 		this.setVisible(true);

@@ -13,8 +13,7 @@ import main.planche.PlancheDomino;
 @SuppressWarnings("serial")
 public class VueDomino extends Vue {
 	public VueDomino(PlancheDomino planche) {
-		super(planche);
-		this.setTitle("Table Domino");
+		super(planche, "Table domino");
 	}
 
 	public void addDomino(int x, int y, BoxDomino box) {
