@@ -14,7 +14,7 @@ import main.Joueur;
 import main.planche.Planche;
 
 @SuppressWarnings("serial")
-abstract class Vue extends JFrame {
+public abstract class Vue extends JFrame {
 	protected Planche planche;
 	protected JPanel table;
 	protected JPanel[][] plateau;

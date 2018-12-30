@@ -23,7 +23,7 @@ public class VueDomino extends Vue {
 	}
 
 	public void partie() {
-		this.planche.partie();
+		//this.planche.partie();
 		for (int i = 0; i < this.planche.getTableau().length; i++) {
 			for (int j = 0; j < this.planche.getTableau()[0].length; j++) {
 				if (this.planche.getTableau()[i][j] != null)

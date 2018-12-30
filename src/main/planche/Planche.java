@@ -27,10 +27,38 @@ public abstract class Planche<T> {
 		pioche.remove(nb);
 		return box;
 	}
+	
+	public Joueur<T> getJoueur(int nb) {
+		return joueurs.get(nb);
+	}
+	
+	public ArrayList<T> getPioche() {
+		return pioche;
+	}
 
-	abstract public void tour(int nb);
+	public void setPioche(ArrayList<T> pioche) {
+		this.pioche = pioche;
+	}
 
-	abstract public void partie();
+	public int getJoueurCourant() {
+		return joueurCourant;
+	}
+
+	public void setJoueurCourant(int joueurCourant) {
+		this.joueurCourant = joueurCourant;
+	}
+
+	public void setTableau(Box[][] tableau) {
+		this.tableau = tableau;
+	}
+
+	public void setJoueurs(ArrayList<Joueur<T>> joueurs) {
+		this.joueurs = joueurs;
+	}
+
+	public ArrayList<Joueur<T>> getJoueurs() {
+		return joueurs;
+	}
 
 	public Box[][] getTableau() {
 		return tableau;
