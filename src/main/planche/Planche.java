@@ -5,28 +5,30 @@ import java.util.ArrayList;
 import main.Joueur;
 import main.box.Box;
 
-public abstract class Planche {
+public abstract class Planche<T> {
 	protected Box[][] tableau;
-	protected ArrayList<Joueur> joueurs;
-	protected ArrayList<Box> pioche;
+	protected ArrayList<Joueur<T>> joueurs;
+	protected ArrayList<T> pioche;
+ 	protected int joueurCourant;
 
 	public Planche(int hauteur, int largeur) {
 		this.tableau = new Box[hauteur][largeur];
-		this.joueurs = new ArrayList<Joueur>();
-		this.pioche = new ArrayList<Box>();
+		this.joueurs = new ArrayList<Joueur<T>>();
+		this.pioche = new ArrayList<T>();
 	}
 
-	public void addJoueur(Joueur joueur) {
+	public void addJoueur(Joueur<T> joueur) {
 		joueurs.add(joueur);
 	}
 
-	public Box pioche() {
+	public T pioche() {
 		int nb = (int) (Math.random() * pioche.size());
+		T box = pioche.get(nb);
 		pioche.remove(nb);
-		return pioche.get(nb);
+		return box;
 	}
 
-	abstract public void tour();
+	abstract public void tour(int nb);
 
 	abstract public void partie();
 
