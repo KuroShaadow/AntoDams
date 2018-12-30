@@ -3,14 +3,13 @@ package main.controleur;
 import java.util.ArrayList;
 
 import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import main.Joueur;
 import main.box.BoxDomino;
 import main.planche.PlancheDomino;
 import main.vue.VueDomino;
 
-public class ControleurDomino implements ChangeListener {
+public class ControleurDomino extends Controleur {
 
 	private PlancheDomino modele;
 	private VueDomino vue;
