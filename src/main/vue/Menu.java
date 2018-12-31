@@ -39,9 +39,10 @@ public class Menu extends JFrame {
 		this.add(imageSaboteur, BorderLayout.CENTER);
 		
 		domino.addActionListener(event -> {
+			this.setVisible(false);
+			
 			PlancheDomino planche = new PlancheDomino();
 			InfoPartie partie = new InfoPartie(planche);
-			this.setVisible(false);
 		});
 		this.add(domino);
 

@@ -6,7 +6,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.Joueur;
+import main.box.Box;
 import main.box.BoxDomino;
+import main.controleur.Controleur;
+import main.controleur.ControleurDomino;
 import main.lien.LienDomino;
 import main.planche.PlancheDomino;
 
@@ -14,32 +17,25 @@ import main.planche.PlancheDomino;
 public class VueDomino extends Vue<BoxDomino> {
 	public VueDomino(PlancheDomino planche) {
 		super(planche, "Table domino");
-	}
-
-	public void addDomino(int x, int y, BoxDomino box) {
-		LienDomino nombreCase = (LienDomino) box.getLien();
-		this.plateau[x][y] = new ImagePan("Images/Dice" + nombreCase.getNombre() + ".png");
-	}
-
-	public void partie() {
-		//this.planche.partie();
-		for (int i = 0; i < this.planche.getTableau().length; i++) {
-			for (int j = 0; j < this.planche.getTableau()[0].length; j++) {
-				if (this.planche.getTableau()[i][j] != null)
-					this.addDomino(i, j, (BoxDomino) this.planche.getTableau()[i][j]);
-			}
-		}
+		this.controleur = new ControleurDomino(this);
+		ajouteControleur(controleur);
 	}
 	
 	@Override
 	public void updateVue() {
 		for(int i = 0; i < this.plateau.length; i++) {
 			for(int j = 0; j < this.plateau[0].length; j++) {
-				if(this.planche.getTableau()[i][j] != null)
-					this.plateau[i][j] = new ImagePan("Images/Dice" + (LienDomino) ((BoxDomino) this.planche.getTableau()[i][j]).getLien() + ".png");
+				Box box = this.planche.getTableau()[i][j];
+				if (box != null) {
+					this.plateau[i][j] = new ImagePan("Images/Dice" + (LienDomino) box.getLien() + ".png");
+					System.out.print(box.getLien());
+				} else {
+					System.out.print(".");
+				}
 			}
+			System.out.println();
 		}
-		Joueur<BoxDomino> joueur = ((PlancheDomino) this.planche).getJoueurs().get(this.planche.getCourant());
+		Joueur<BoxDomino> joueur = this.planche.getJoueur(this.planche.getCourant());
 		maPioche.removeAll();
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;

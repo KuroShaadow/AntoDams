@@ -10,19 +10,21 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import main.Joueur;
-import main.box.Box;
+import main.controleur.Controleur;
 import main.planche.Planche;
 
 @SuppressWarnings("serial")
-abstract class Vue<T> extends JFrame {
+public abstract class Vue<T> extends JFrame {
 	protected Planche<T> planche;
+	protected Controleur<T> controleur;
 	protected JPanel table;
 	protected JPanel[][] plateau;
 	protected JPanel maPioche;
 	protected ArrayList<JPanel[]> maMain;
 
 	public Vue(Planche<T> planche, String titre) {
+		this.planche = planche;
+		
 		this.pack();
 		this.setTitle(titre);
 		this.setSize(new Dimension(1920, 1080));
@@ -30,8 +32,6 @@ abstract class Vue<T> extends JFrame {
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		// chaque joueur a sa propre vue
-		this.planche = planche;
 
 		// on créé la table et le plateau
 		initTable();
@@ -56,12 +56,21 @@ abstract class Vue<T> extends JFrame {
 		c.fill = GridBagConstraints.BOTH;
 		this.add(maPioche, c);
 	}
+	
+	protected void ajouteControleur(Controleur<T> controleur) {
+		for (int i = 0; i < this.plateau.length; i++) {
+			for (int j = 0; j < this.plateau[0].length; j++) {
+				plateau[i][j].addMouseListener(controleur);
+			}
+		}
+	}
 
 	public void initTable() {
 		this.table = new JPanel();
 		this.table.setLayout(
 				new GridLayout(this.planche.getTableau().length + 2, this.planche.getTableau()[0].length + 2));
 		initPlateau();
+		initMaMain();
 	}
 
 	public void initPlateau() {
@@ -80,5 +89,17 @@ abstract class Vue<T> extends JFrame {
 		}
 	}
 
-	abstract void updateVue();
+	public void initMaMain() {
+		this.maMain = new ArrayList<>();
+	}
+
+	public abstract void updateVue();
+	
+	public Planche<T> getPlanche() {
+		return planche;
+	}
+	
+	public Controleur<T> getControleur() {
+		return controleur;
+	}
 }

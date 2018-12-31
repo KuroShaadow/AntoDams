@@ -35,12 +35,14 @@ public class InfoPartie extends JFrame {
 		JButton button = new JButton("Valider");
 		
 		button.addActionListener(event -> {
+			this.setVisible(false);
+			
 			this.planche.addJoueur(new Joueur<BoxDomino>(nomJoueur1.getText()));
 			this.planche.addJoueur(new Joueur<BoxDomino>(nomJoueur2.getText()));
 			
 			VueDomino vue = new VueDomino(this.planche);
 			vue.updateVue();
-			this.setVisible(false);
+			vue.getControleur().partie();
 		});
 
 		this.infos = new JPanel();
