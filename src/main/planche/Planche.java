@@ -35,4 +35,12 @@ public abstract class Planche<T> {
 	public Box[][] getTableau() {
 		return tableau;
 	}
+	
+	public ArrayList<Joueur<T>> getJoueurs() {
+		return this.joueurs;
+	}
+	
+	public int getCourant() {
+		return this.joueurCourant;
+	}
 }
