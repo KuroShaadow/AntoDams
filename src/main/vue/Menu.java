@@ -40,29 +40,23 @@ public class Menu extends JFrame {
 		
 		domino.addActionListener(event -> {
 			PlancheDomino planche = new PlancheDomino();
-			VueDomino vue = new VueDomino(planche, new Joueur("joueur 1"));
+			InfoPartie partie = new InfoPartie(planche);
 			this.setVisible(false);
 		});
 		this.add(domino);
 
 		puzzle.addActionListener(event -> {
-			PlancheDomino planche = new PlancheDomino();
-			// Vue vue = new Vue(planche, new Joueur("joueur 1"));
-			this.setVisible(false);
+			
 		});
 		this.add(puzzle);
 
 		dominoGommettes.addActionListener(event -> {
-			PlancheDomino planche = new PlancheDomino();
-			// Vue vue = new Vue(planche, new Joueur("joueur 1"));
-			this.setVisible(false);
+			
 		});
 		this.add(dominoGommettes);
 
 		saboteur.addActionListener(event -> {
-			PlancheDomino planche = new PlancheDomino();
-			// Vue vue = new Vue(planche, new Joueur("joueur 1"));
-			this.setVisible(false);
+			
 		});
 		this.add(saboteur);
 	}
