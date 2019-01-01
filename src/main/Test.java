@@ -8,7 +8,6 @@ class Test {
 	public static void main(String[] args) {
 		Test test = new Test();
 		test.testDomino();
-		test.testDomino2();
 	}
 
 	private void testDomino() {
@@ -24,12 +23,6 @@ class Test {
 		poseDomino(plancheDomino, dom2, 12, 11, 2, "dom2");
 		poseDomino(plancheDomino, dom3, 13, 12, 1, "dom3");
 		poseDomino(plancheDomino, dom4, 11, 10, 1, "dom4");
-	}
-
-	private void testDomino2() {
-
-		PlancheDomino plancheDomino = new PlancheDomino();
-		plancheDomino.partie();
 	}
 
 	private void poseDomino(PlancheDomino planche, BoxDomino box, int x, int y, int sens, String nom) {

@@ -1,20 +1,19 @@
-package main;
+package main.demande;
 
 import java.util.Scanner;
 
 public class Demande {
-	private int nb;
-	private int x;
-	private int y;
-	private int sens;
+	protected Integer nb;
+	protected Integer x;
+	protected Integer y;
+
 	private static Scanner sc = new Scanner(System.in);
 
 	public Demande() {
 
-		this.nb = lire("nb");
-		this.x = lire("x");
-		this.y = lire("y");
-		this.sens = lire("sens");
+		this.nb = null;
+		this.x = null;
+		this.y = null;
 	}
 
 	private int lire(String text) {
@@ -36,8 +35,20 @@ public class Demande {
 		return y;
 	}
 
-	public int getSens() {
-		return sens;
+	public void setNb(Integer nb) {
+		this.nb = nb;
+	}
+
+	public void setX(Integer x) {
+		this.x = x;
+	}
+
+	public void setY(Integer y) {
+		this.y = y;
+	}
+
+	public boolean isComplet() {
+		return nb != null && x != null && y != null;
 	}
 
 }

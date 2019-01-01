@@ -29,4 +29,9 @@ public class Joueur<T> {
 		return this.main.get(nb);
 	}
 	
+	@Override
+	public String toString() {
+		return this.nom;
+	}
+	
 }
