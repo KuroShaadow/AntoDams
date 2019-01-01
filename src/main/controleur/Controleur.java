@@ -3,23 +3,16 @@ package main.controleur;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import main.box.BoxDomino;
+import main.demande.Demande;
 import main.planche.Planche;
-import main.planche.PlancheDomino;
 import main.vue.Vue;
-import main.vue.VueDomino;
 
 public abstract class Controleur<T> implements MouseListener {
 
 	protected Planche<T> modele;
 	protected Vue<T> vue;
-
-	protected Integer numero;
-	protected Integer x;
-	protected Integer y;
+	
+	protected Demande demande;
 
 	public Controleur(Vue<T> vue) {
 		this.vue = vue;
@@ -27,12 +20,11 @@ public abstract class Controleur<T> implements MouseListener {
 	}
 	
 	protected void attente() {
-		numero = null;
-		x = null;
-		y = null;
-		while (numero==null || x==null || y==null) {
+
+		while (!demande.isComplet()) {
+
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 			}
 		}

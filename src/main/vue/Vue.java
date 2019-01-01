@@ -1,6 +1,7 @@
 package main.vue;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,6 +9,7 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.controleur.Controleur;
@@ -18,9 +20,9 @@ public abstract class Vue<T> extends JFrame {
 	protected Planche<T> planche;
 	protected Controleur<T> controleur;
 	protected JPanel table;
-	protected ImagePan[][] plateau;
+	protected JLabel[][] plateau;
 	protected JPanel maPioche;
-	protected ArrayList<JPanel[]> maMain;
+	protected ArrayList<JLabel[]> maMain;
 
 	public Vue(Planche<T> planche, String titre) {
 		this.planche = planche;
@@ -73,16 +75,17 @@ public abstract class Vue<T> extends JFrame {
 	}
 
 	public void initPlateau() {
-		this.plateau = new ImagePan[this.planche.getTableau().length][this.planche.getTableau()[0].length];
+
+		this.plateau = new JLabel[this.planche.getTableau().length][this.planche.getTableau()[0].length];
 		for (int i = -1; i < this.plateau.length + 1; i++) {
 			for (int j = -1; j < this.plateau[0].length + 1; j++) {
-				JPanel box;
+				Component box;
 				if (i == -1 || i == this.plateau.length || j == -1 || j == this.plateau[0].length) {
 					box = new JPanel();
 					box.setBackground(Color.DARK_GRAY);
 				} else {
-					box = new ImagePan();
-					this.plateau[i][j] = (ImagePan) box;
+					box = new JLabel();
+					this.plateau[i][j] = (JLabel) box;
 				}
 				this.table.add(box);
 			}
