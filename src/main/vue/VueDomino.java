@@ -27,9 +27,10 @@ public class VueDomino extends Vue<BoxDomino> {
 			for(int j = 0; j < this.plateau[0].length; j++) {
 				Box box = this.planche.getTableau()[i][j];
 				if (box != null) {
-					this.plateau[i][j] = new ImagePan("Images/Dice" + (LienDomino) box.getLien() + ".png");
+					this.plateau[i][j].setImage("Images/Dice" + (LienDomino) box.getLien() + ".png");
 					System.out.print(box.getLien());
 				} else {
+					this.plateau[i][j].removeImage();
 					System.out.print(".");
 				}
 			}

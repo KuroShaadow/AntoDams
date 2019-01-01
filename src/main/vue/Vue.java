@@ -18,20 +18,19 @@ public abstract class Vue<T> extends JFrame {
 	protected Planche<T> planche;
 	protected Controleur<T> controleur;
 	protected JPanel table;
-	protected JPanel[][] plateau;
+	protected ImagePan[][] plateau;
 	protected JPanel maPioche;
 	protected ArrayList<JPanel[]> maMain;
 
 	public Vue(Planche<T> planche, String titre) {
 		this.planche = planche;
-		
+
 		this.pack();
 		this.setTitle(titre);
 		this.setSize(new Dimension(1920, 1080));
 		this.setPreferredSize(new Dimension(1920, 1080));
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
 		// on créé la table et le plateau
 		initTable();
@@ -56,7 +55,7 @@ public abstract class Vue<T> extends JFrame {
 		c.fill = GridBagConstraints.BOTH;
 		this.add(maPioche, c);
 	}
-	
+
 	protected void ajouteControleur(Controleur<T> controleur) {
 		for (int i = 0; i < this.plateau.length; i++) {
 			for (int j = 0; j < this.plateau[0].length; j++) {
@@ -74,15 +73,16 @@ public abstract class Vue<T> extends JFrame {
 	}
 
 	public void initPlateau() {
-		this.plateau = new JPanel[this.planche.getTableau().length][this.planche.getTableau()[0].length];
+		this.plateau = new ImagePan[this.planche.getTableau().length][this.planche.getTableau()[0].length];
 		for (int i = -1; i < this.plateau.length + 1; i++) {
 			for (int j = -1; j < this.plateau[0].length + 1; j++) {
-				JPanel box = new JPanel();
-				if (i == -1 || i == this.plateau.length || j == -1
-						|| j == this.plateau[0].length) {
+				JPanel box;
+				if (i == -1 || i == this.plateau.length || j == -1 || j == this.plateau[0].length) {
+					box = new JPanel();
 					box.setBackground(Color.DARK_GRAY);
 				} else {
-					this.plateau[i][j] = box;
+					box = new ImagePan();
+					this.plateau[i][j] = (ImagePan) box;
 				}
 				this.table.add(box);
 			}
@@ -94,11 +94,11 @@ public abstract class Vue<T> extends JFrame {
 	}
 
 	public abstract void updateVue();
-	
+
 	public Planche<T> getPlanche() {
 		return planche;
 	}
-	
+
 	public Controleur<T> getControleur() {
 		return controleur;
 	}

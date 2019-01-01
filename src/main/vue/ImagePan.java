@@ -10,31 +10,35 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 class ImagePan extends JPanel {
+
 	private BufferedImage image;
 
-	public ImagePan(String s) {
-		File f = new File(s);
-		BufferedImage image = null;
-		try {
-			image = ImageIO.read(f);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		this.image = image;
-		paintComponent(image.getGraphics());
-	}
-	
-	public void setImage(String s) {
-		File f = new File(s);
-		BufferedImage image = null;
-		try {
-			image = ImageIO.read(f);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		this.image = image;
+	public ImagePan() {
+		this.image = null;
 	}
 
+	public ImagePan(String s) {
+		try {
+			this.image = ImageIO.read(new File(s));
+			System.out.println(image);
+		} catch (IOException e) {
+			this.image = null;
+		}
+	}
+
+	public void setImage(String s) {
+		try {
+			this.image = ImageIO.read(new File(s));
+		} catch (IOException e) {
+			this.image = null;
+		}
+	}
+
+	public void removeImage() {
+		this.image = null;
+	}
+
+	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(this.image, 0, 0, this);
