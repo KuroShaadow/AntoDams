@@ -49,9 +49,9 @@ public class VueDomino extends Vue<BoxDomino> {
 		maPioche.removeAll();
 		maPioche.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.NORTH;
 		c.gridx = 0;
 		c.gridy = 0;
-		c.weighty = 1;
 		c.gridwidth = 2;
 		maPioche.add(new JLabel("Pioche de " + joueur.toString()), c);
 		c.gridwidth = 1;
