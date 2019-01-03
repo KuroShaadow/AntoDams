@@ -57,12 +57,13 @@ public class VueDomino extends Vue<BoxDomino> {
 		maPioche.removeAll();
 		maPioche.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.NORTH;
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 2;
 		maPioche.add(new JLabel("Pioche de " + joueur.toString()), c);
 		c.gridwidth = 1;
+		c.ipadx = 30;
+		c.ipady = 30;
 		for (int i = 0; i < joueur.getMain().size(); i++) {
 			LienDomino l1 = (LienDomino) ((BoxDomino) joueur.getMain().get(i)).getLien();
 			LienDomino l2 = (LienDomino) (((BoxDomino) joueur.getMain().get(i)).getBox2()).getLien();
