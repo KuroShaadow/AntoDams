@@ -1,6 +1,8 @@
 package main.vue;
 
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
