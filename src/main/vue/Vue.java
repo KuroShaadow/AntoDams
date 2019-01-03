@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -101,5 +102,31 @@ public abstract class Vue<T> extends JFrame {
 
 	public Controleur<T> getControleur() {
 		return controleur;
+	}
+	
+	public ArrayList<JPanel[]> getMain() {
+		return this.maMain;
+	}
+	
+	public ImagePan[][] getPlateau() {
+		return this.plateau;
+	}
+	
+	public int[] getCoordonnees(MouseEvent e) {
+		for(int i = 0; i < plateau.length; i++) {
+			for(int j = 0; j < plateau[0].length; j++) {
+				if(plateau[i][j] == e.getComponent())
+					return new int[]{i, j};
+			}
+		}
+		return null;
+	}
+	
+	public boolean contains(MouseEvent e) {
+		for(int i = 0; i < plateau.length; i++)
+			for(int j = 0; j < plateau[0].length; j++)
+				if(plateau[i][j] == e.getComponent())
+					return true;
+		return false;
 	}
 }
