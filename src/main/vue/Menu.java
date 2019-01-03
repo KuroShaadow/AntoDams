@@ -9,13 +9,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import main.planche.PlancheDomino;
+import main.planche.PlanchePuzzle;
 
 @SuppressWarnings("serial")
 public class Menu extends JFrame {
 	public Menu() {
 		this.pack();
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.setSize((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+		this.setSize((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(),
+				(int) Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		this.setVisible(true);
 		this.setTitle("Menu");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +49,10 @@ public class Menu extends JFrame {
 		this.add(domino);
 
 		puzzle.addActionListener(event -> {
+			this.setVisible(false);
 
+			PlanchePuzzle planche = new PlanchePuzzle();
+			// InfoPartie partie = new InfoPartie(planche);
 		});
 		this.add(puzzle);
 

@@ -34,6 +34,36 @@ public abstract class Controleur<T> implements MouseListener {
 	protected abstract void tour(int nb);
 
 	@Override
+	public void mouseReleased(MouseEvent e) {
+		// cas du changement de domino
+		if (vue.getMain().contains(e.getComponent()))
+			demande.setNb(vue.getMain().indexOf(e.getComponent()));
+		else if (vue.contains(e)) {
+			int[] coord = vue.getCoordonnees(e);
+			if (demande.getX() == null || demande.getY() == null) {
+				// cas de la selection de la case
+				demande.setX(coord[0]);
+				demande.setY(coord[1]);
+			} else {
+				// cas de la selection du sens
+				int x = demande.getX();
+				int y = demande.getY();
+
+				if (coord[0] == x + 1 && coord[1] == y)
+					demande.setSens(0);
+				else if (coord[0] == x && coord[1] == y + 1)
+					demande.setSens(1);
+				else if (coord[0] == x - 1 && coord[1] == y)
+					demande.setSens(2);
+				else if (coord[0] == x && coord[1] == y - 1)
+					demande.setSens(3);
+				else
+					demande = new Demande();
+			}
+		}
+	}
+
+	@Override
 	public void mouseClicked(MouseEvent e) {
 	}
 
@@ -48,9 +78,4 @@ public abstract class Controleur<T> implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-	}
-
 }

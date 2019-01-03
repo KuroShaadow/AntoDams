@@ -43,12 +43,11 @@ public class InfoPartie extends JFrame {
 			VueDomino vue = new VueDomino(this.planche);
 			vue.updateVue();
 
-			Runnable r1 = new Runnable() {
+			new Thread(new Runnable() {
 				public void run() {
 					vue.getControleur().partie();
 				}
-			};
-			new Thread(r1).start();
+			}).start();
 		});
 
 		this.infos = new JPanel();
