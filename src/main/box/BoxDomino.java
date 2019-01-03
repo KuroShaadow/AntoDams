@@ -8,10 +8,8 @@ public class BoxDomino extends Box {
 	private Box box2;
 
 	public BoxDomino(LienDomino lien1, LienDomino lien2) {
-		super(2, lien1);
-		this.box2 = new Box(2, lien2);
-		this.ajout();
-		box2.ajout();
+		super(1, lien1);
+		this.box2 = new Box(1, lien2);
 	}
 
 	@Override

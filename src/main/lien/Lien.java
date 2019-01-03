@@ -6,5 +6,10 @@ public class Lien {
 	public boolean equals(Object obj) {
 		return toString().equals(obj.toString());
 	}
+	
+	@Override
+	public String toString() {
+		return "";
+	}
 
 }

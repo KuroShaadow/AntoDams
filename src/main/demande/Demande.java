@@ -3,9 +3,11 @@ package main.demande;
 import java.util.Scanner;
 
 public class Demande {
+	
 	protected Integer nb;
 	protected Integer x;
 	protected Integer y;
+	protected Integer sens;
 
 	private static Scanner sc = new Scanner(System.in);
 
@@ -14,6 +16,11 @@ public class Demande {
 		this.nb = null;
 		this.x = null;
 		this.y = null;
+		this.sens = null;
+	}
+
+	public boolean isComplet() {
+		return nb != null && x != null && y != null && sens != null;
 	}
 
 	private int lire(String text) {
@@ -35,6 +42,10 @@ public class Demande {
 		return y;
 	}
 
+	public Integer getSens() {
+		return sens;
+	}
+
 	public void setNb(Integer nb) {
 		this.nb = nb;
 	}
@@ -47,8 +58,8 @@ public class Demande {
 		this.y = y;
 	}
 
-	public boolean isComplet() {
-		return nb != null && x != null && y != null;
+	public void setSens(Integer sens) {
+		this.sens = sens;
 	}
 
 }
