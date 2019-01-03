@@ -1,6 +1,7 @@
 package main.vue;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -22,7 +23,7 @@ public abstract class Vue<T> extends JFrame {
 	protected JPanel table;
 	protected ImagePan[][] plateau;
 	protected JPanel maPioche;
-	protected ArrayList<JPanel[]> maMain;
+	protected ArrayList<JPanel> maMain;
 
 	public Vue(Planche<T> planche, String titre) {
 		this.planche = planche;
@@ -62,6 +63,7 @@ public abstract class Vue<T> extends JFrame {
 				plateau[i][j].addMouseListener(controleur);
 			}
 		}
+		this.controleur = controleur;
 	}
 
 	public void initTable() {
@@ -95,6 +97,23 @@ public abstract class Vue<T> extends JFrame {
 	}
 
 	public abstract void updateVue();
+	public int[] getCoordonnees(Component component) {
+		for(int i = 0; i < plateau.length; i++) {
+			for(int j = 0; j < plateau[0].length; j++) {
+				if(plateau[i][j] == component)
+					return new int[]{i, j};
+			}
+		}
+		return null;
+	}
+	
+	public boolean contains(Component component) {
+		for(int i = 0; i < plateau.length; i++)
+			for(int j = 0; j < plateau[0].length; j++)
+				if(plateau[i][j] == component)
+					return true;
+		return false;
+	}
 
 	public Planche<T> getPlanche() {
 		return planche;
@@ -104,7 +123,7 @@ public abstract class Vue<T> extends JFrame {
 		return controleur;
 	}
 	
-	public ArrayList<JPanel[]> getMain() {
+	public ArrayList<JPanel> getMain() {
 		return this.maMain;
 	}
 	
