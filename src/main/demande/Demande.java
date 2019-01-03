@@ -30,15 +30,15 @@ public class Demande {
 		return lu;
 	}
 
-	public int getNb() {
+	public Integer getNb() {
 		return nb;
 	}
 
-	public int getX() {
+	public Integer getX() {
 		return x;
 	}
 
-	public int getY() {
+	public Integer getY() {
 		return y;
 	}
 
