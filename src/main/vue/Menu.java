@@ -1,8 +1,8 @@
 package main.vue;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,7 +14,8 @@ import main.planche.PlancheDomino;
 public class Menu extends JFrame {
 	public Menu() {
 		this.pack();
-		this.setSize(new Dimension(1920, 1080));
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setSize((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		this.setVisible(true);
 		this.setTitle("Menu");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

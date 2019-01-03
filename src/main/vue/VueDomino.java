@@ -2,7 +2,7 @@ package main.vue;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
+import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -72,6 +72,7 @@ public class VueDomino extends Vue<BoxDomino> {
 			for (int j = 0; j < 2; j++) {
 				c.gridx = j;
 				c.gridy = i + 1;
+				c.insets = new Insets(10, 0, 0, 0);
 				this.maPioche.add(this.maMain.get(i)[j], c);
 			}
 		}
