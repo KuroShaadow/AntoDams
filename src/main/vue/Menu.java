@@ -6,7 +6,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import main.planche.PlancheDomino;
 
@@ -25,16 +25,16 @@ public class Menu extends JFrame {
 		JButton dominoGommettes = new JButton("Domino-gommettes");
 		JButton saboteur = new JButton("Saboteur");
 
-		JLabel imageDomino = new JLabel(new ImageLab("Images/domino.jpg"));
+		JPanel imageDomino = new ImagePan("Images/domino.jpg");
 		this.add(imageDomino, BorderLayout.CENTER);
 
-		JLabel imagePuzzle = new JLabel(new ImageLab("Images/puzzle.jpg"));
+		JPanel imagePuzzle = new ImagePan("Images/puzzle.jpg");
 		this.add(imagePuzzle, BorderLayout.CENTER);
 
-		JLabel imageDominoGommettes = new JLabel(new ImageLab("Images/dominoGommettes.jpg", 531, 400));
+		JPanel imageDominoGommettes = new ImagePan("Images/dominoGommettes.jpg");
 		this.add(imageDominoGommettes, BorderLayout.CENTER);
 
-		JLabel imageSaboteur = new JLabel(new ImageLab("Images/Saboteur.jpg", 500, 375));
+		JPanel imageSaboteur = new ImagePan("Images/Saboteur.jpg");
 		this.add(imageSaboteur, BorderLayout.CENTER);
 
 		domino.addActionListener(event -> {
