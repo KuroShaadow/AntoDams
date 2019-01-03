@@ -1,10 +1,10 @@
 package main.vue;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
@@ -27,8 +27,8 @@ public abstract class Vue<T> extends JFrame {
 		this.planche = planche;
 
 		this.setTitle(titre);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	    this.setBounds(0,0,screenSize.width, screenSize.height);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setSize((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -40,18 +40,18 @@ public abstract class Vue<T> extends JFrame {
 		updateVue();
 
 		// separation de la table et de la pioche
-		this.setLayout(new GridBagLayout());
+		this.getContentPane().setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 0;
-		c.fill = GridBagConstraints.BOTH;
-		c.gridwidth = 2;
-		c.gridheight = 2;
-		c.weightx = 1;
-		c.weighty = 100;
+		c.ipadx = this.getSize().height - 375;
+		c.ipady = this.getSize().height - 375;
 		this.add(table, c);
-		c.gridx = 2;
+		c.gridx = 1;
 		c.gridy = 0;
+		c.gridy = 0;
+		c.ipadx = 0;
+		c.insets = new Insets(0, 10, this.getSize().height - 375, 0);
 		this.add(maPioche, c);
 	}
 

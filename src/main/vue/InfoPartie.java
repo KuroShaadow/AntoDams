@@ -1,8 +1,8 @@
 package main.vue;
 
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,7 +21,8 @@ public class InfoPartie extends JFrame {
 
 	public InfoPartie(PlancheDomino planche) {
 		this.pack();
-		this.setSize(new Dimension(1920, 1080));
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setSize((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		this.setVisible(true);
 		this.setTitle("Info");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
