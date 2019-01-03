@@ -19,13 +19,4 @@ public class PlancheDomino extends Planche<BoxDomino> {
 		if (this.joueurs.size() <= 2)
 			super.addJoueur(joueur);
 	}
-	
-	public void affiche() {
-		for (int i=0;i<tableau.length; i++) {
-			for (int j=0;j<tableau.length; j++)
-				System.out.print(tableau[j][i]==null?".":tableau[j][i].getLien());
-
-			System.out.println();
-		}
-	}
 }
