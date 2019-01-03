@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -27,10 +28,9 @@ public abstract class Vue<T> extends JFrame {
 	public Vue(Planche<T> planche, String titre) {
 		this.planche = planche;
 
-		this.pack();
 		this.setTitle(titre);
-		this.setSize(new Dimension(1920, 1080));
-		this.setPreferredSize(new Dimension(1920, 1080));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	    this.setBounds(0,0,screenSize.width, screenSize.height);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -54,7 +54,6 @@ public abstract class Vue<T> extends JFrame {
 		this.add(table, c);
 		c.gridx = 2;
 		c.gridy = 0;
-		c.fill = GridBagConstraints.BOTH;
 		this.add(maPioche, c);
 	}
 
