@@ -23,8 +23,7 @@ public class ControleurDomino extends Controleur<BoxDomino> {
 			this.demande = new Demande();
 			attente();
 			BoxDomino box = joueur.getBox(demande.getNb());
-			if (box.estPosable(modele.getTableau(), demande.getX(), demande.getY(),
-					demande.getSens())) {
+			if (box.estPosable(modele.getTableau(), demande.getX(), demande.getY(), demande.getSens())) {
 				joueur.joue(demande.getNb()).pose(modele.getTableau(), demande.getX(), demande.getY(),
 						demande.getSens());
 				break;
@@ -69,12 +68,18 @@ public class ControleurDomino extends Controleur<BoxDomino> {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-
-		demande.setNb(1);
-		demande.setX(1);
-		demande.setY(1);
-		demande.setSens(1);
-
+		if(vue.getMain().contains(e.getComponent()))
+			demande.setNb(vue.getMain().indexOf(e.getComponent()));
+		demande.setX(vue.getCoordonnees(e)[0]);
+		demande.setY(vue.getCoordonnees(e)[1]);
+		if (vue.getCoordonnees(e)[0] == demande.getX() + 1)
+			demande.setSens(1);
+		if(vue.getCoordonnees(e)[0] == demande.getX() - 1)
+			demande.setSens(3);
+		if(vue.getCoordonnees(e)[1] == demande.getX() + 1)
+			demande.setSens(2);
+		if(vue.getCoordonnees(e)[1] == demande.getX() - 1)
+			demande.setSens(0);
 		// cas du changement de domino
 
 		// cas de la selection de la case
@@ -82,5 +87,4 @@ public class ControleurDomino extends Controleur<BoxDomino> {
 		// cas de la selection du sens
 
 	}
-
 }

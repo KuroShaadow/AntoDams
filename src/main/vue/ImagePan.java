@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-class ImagePan extends JPanel {
+public class ImagePan extends JPanel {
 
 	BufferedImage image;
 
