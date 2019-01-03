@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import main.Joueur;
 import main.box.BoxDomino;
-import main.demande.DemandeDomino;
+import main.demande.Demande;
 import main.vue.Vue;
 
 public class ControleurDomino extends Controleur<BoxDomino> {
@@ -20,13 +20,13 @@ public class ControleurDomino extends Controleur<BoxDomino> {
 
 		Joueur<BoxDomino> joueur = modele.getJoueur(nb);
 		while (true) {
-			this.demande = new DemandeDomino();
+			this.demande = new Demande();
 			attente();
 			BoxDomino box = joueur.getBox(demande.getNb());
 			if (box.estPosable(modele.getTableau(), demande.getX(), demande.getY(),
-					((DemandeDomino) demande).getSens())) {
+					demande.getSens())) {
 				joueur.joue(demande.getNb()).pose(modele.getTableau(), demande.getX(), demande.getY(),
-						((DemandeDomino) demande).getSens());
+						demande.getSens());
 				break;
 			}
 		}
@@ -73,7 +73,7 @@ public class ControleurDomino extends Controleur<BoxDomino> {
 		demande.setNb(1);
 		demande.setX(1);
 		demande.setY(1);
-		((DemandeDomino) demande).setSens(1);
+		demande.setSens(1);
 
 		// cas du changement de domino
 
