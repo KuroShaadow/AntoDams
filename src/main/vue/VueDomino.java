@@ -67,14 +67,15 @@ public class VueDomino extends Vue<BoxDomino> {
 		for (int i = 0; i < joueur.getMain().size(); i++) {
 			LienDomino l1 = (LienDomino) ((BoxDomino) joueur.getMain().get(i)).getLien();
 			LienDomino l2 = (LienDomino) (((BoxDomino) joueur.getMain().get(i)).getBox2()).getLien();
-			this.maMain.add(new JPanel[] { new ImagePan(images[l1.getNombre()]),
-					new ImagePan(images[l2.getNombre()]) });
-			for (int j = 0; j < 2; j++) {
-				c.gridx = j;
-				c.gridy = i + 1;
-				c.insets = new Insets(10, 0, 0, 0);
-				this.maPioche.add(this.maMain.get(i)[j], c);
-			}
+			JPanel ligne = new JPanel();
+			ligne.add(new ImagePan(images[l1.getNombre()]));
+			ligne.add(new ImagePan(images[l2.getNombre()]));
+			ligne.addMouseListener(controleur);
+			this.maMain.add(ligne);
+			c.gridx = 0;
+			c.gridy = i + 1;
+			c.insets = new Insets(10, 0, 0, 0);
+			this.maPioche.add(ligne);
 		}
 	}
 }

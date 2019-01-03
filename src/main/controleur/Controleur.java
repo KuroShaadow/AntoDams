@@ -1,5 +1,6 @@
 package main.controleur;
 
+import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -36,10 +37,11 @@ public abstract class Controleur<T> implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// cas du changement de domino
-		if (vue.getMain().contains(e.getComponent()))
-			demande.setNb(vue.getMain().indexOf(e.getComponent()));
-		else if (vue.contains(e)) {
-			int[] coord = vue.getCoordonnees(e);
+		Component component = e.getComponent();
+		if (vue.getMain().contains(component))
+			demande.setNb(vue.getMain().indexOf(component));
+		else if (vue.contains(component)) {
+			int[] coord = vue.getCoordonnees(component);
 			if (demande.getX() == null || demande.getY() == null) {
 				// cas de la selection de la case
 				demande.setX(coord[0]);
