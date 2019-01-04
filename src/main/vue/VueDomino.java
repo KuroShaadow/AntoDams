@@ -55,6 +55,7 @@ public class VueDomino extends Vue<BoxDomino> {
 		}
 		Joueur<BoxDomino> joueur = this.planche.getJoueur(this.planche.getCourant());
 		maPioche.removeAll();
+		initMaMain();
 		maPioche.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
@@ -74,10 +75,10 @@ public class VueDomino extends Vue<BoxDomino> {
 			c1.gridx = 1;
 			ligne.add(new ImagePan(images[l2.getNombre()]), c1);
 			ligne.addMouseListener(controleur);
-			this.maMain.add(ligne);
 			c.gridx = 0;
 			c.gridy = i + 1;
 			c.insets = new Insets(10, 0, 0, 0);
+			this.maMain.add(ligne);
 			this.maPioche.add(ligne, c);
 		}
 	}
