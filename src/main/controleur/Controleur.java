@@ -12,14 +12,14 @@ public abstract class Controleur<T> implements MouseListener {
 
 	protected Planche<T> modele;
 	protected Vue<T> vue;
-	
+
 	protected Demande demande;
 
 	public Controleur(Vue<T> vue) {
 		this.vue = vue;
 		this.modele = vue.getPlanche();
 	}
-	
+
 	protected void attente() {
 
 		while (!demande.isComplet()) {
@@ -32,6 +32,7 @@ public abstract class Controleur<T> implements MouseListener {
 	}
 
 	public abstract void partie();
+
 	protected abstract void tour(int nb);
 
 	@Override
@@ -51,13 +52,13 @@ public abstract class Controleur<T> implements MouseListener {
 				int x = demande.getX();
 				int y = demande.getY();
 
-				if (coord[0] == x + 1 && coord[1] == y)
+				if (coord[0] == x && coord[1] == y + 1)
 					demande.setSens(0);
-				else if (coord[0] == x && coord[1] == y + 1)
+				else if (coord[0] == x + 1 && coord[1] == y)
 					demande.setSens(1);
-				else if (coord[0] == x - 1 && coord[1] == y)
-					demande.setSens(2);
 				else if (coord[0] == x && coord[1] == y - 1)
+					demande.setSens(2);
+				else if (coord[0] == x - 1 && coord[1] == y)
 					demande.setSens(3);
 				else
 					demande = new Demande();

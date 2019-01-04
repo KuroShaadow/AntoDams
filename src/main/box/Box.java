@@ -53,11 +53,11 @@ public class Box {
 
 	public int[] sensToCoordonnees(int sens) {
 		if (sens == 0)
-			return new int[] { 0, -1 };
+			return new int[] { 0, 1 };
 		if (sens == 1)
 			return new int[] { 1, 0 };
 		if (sens == 2)
-			return new int[] { 0, 1 };
+			return new int[] { 0, -1 };
 		if (sens == 3)
 			return new int[] { -1, 0 };
 		throw new RuntimeException();
