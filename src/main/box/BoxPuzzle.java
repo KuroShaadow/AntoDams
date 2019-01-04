@@ -35,7 +35,7 @@ public class BoxPuzzle extends Box {
 
 		for (int i = 0; i < 4; i++) {
 			int[] cote = sensToCoordonnees(i);
-			int[] rot = rotation(cote[0], cote[1], x, y, sens);
+			int[] rot = rotation(x+cote[0], y+cote[1], x, y, sens);
 			box2[i].pose(tableau, rot[0], rot[1], sens);
 		}
 

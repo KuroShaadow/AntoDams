@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import main.Joueur;
+import main.box.BoxPuzzle;
 import main.planche.PlancheDomino;
 import main.planche.PlanchePuzzle;
 
@@ -52,7 +54,14 @@ public class Menu extends JFrame {
 			this.setVisible(false);
 
 			PlanchePuzzle planche = new PlanchePuzzle();
+			planche.addJoueur(new Joueur<BoxPuzzle>("joueur"));
 			VuePuzzle vuePuzzle = new VuePuzzle(planche);
+
+			new Thread(new Runnable() {
+				public void run() {
+					vuePuzzle.getControleur().partie();
+				}
+			}).start();
 		});
 		this.add(puzzle);
 
