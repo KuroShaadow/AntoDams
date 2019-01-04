@@ -59,23 +59,26 @@ public class VueDomino extends Vue<BoxDomino> {
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 0;
-		c.gridwidth = 2;
 		maPioche.add(new JLabel("Pioche de " + joueur.toString()), c);
-		c.gridwidth = 1;
-		c.ipadx = 30;
-		c.ipady = 30;
 		for (int i = 0; i < joueur.getMain().size(); i++) {
 			LienDomino l1 = (LienDomino) ((BoxDomino) joueur.getMain().get(i)).getLien();
 			LienDomino l2 = (LienDomino) (((BoxDomino) joueur.getMain().get(i)).getBox2()).getLien();
 			JPanel ligne = new JPanel();
-			ligne.add(new ImagePan(images[l1.getNombre()]));
-			ligne.add(new ImagePan(images[l2.getNombre()]));
+			ligne.setLayout(new GridBagLayout());
+			GridBagConstraints c1 = new GridBagConstraints();
+			c1.ipadx = 30;
+			c1.ipady = 30;
+			c1.gridx = 0;
+			c1.gridy = i;
+			ligne.add(new ImagePan(images[l1.getNombre()]), c1);
+			c1.gridx = 1;
+			ligne.add(new ImagePan(images[l2.getNombre()]), c1);
 			ligne.addMouseListener(controleur);
 			this.maMain.add(ligne);
 			c.gridx = 0;
 			c.gridy = i + 1;
 			c.insets = new Insets(10, 0, 0, 0);
-			this.maPioche.add(ligne);
+			this.maPioche.add(ligne, c);
 		}
 	}
 }

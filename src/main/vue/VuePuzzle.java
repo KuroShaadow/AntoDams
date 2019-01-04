@@ -22,12 +22,12 @@ public class VuePuzzle extends Vue<BoxPuzzle> {
 	private BufferedImage[] images;
 
 	public VuePuzzle(PlanchePuzzle planche) {
-		super(planche, "Table domino");
+		super(planche, "Table puzzle");
 
-		this.images = new BufferedImage[7];
+		this.images = new BufferedImage[4];
 		try {
 		for (int i = 0; i < this.images.length; i++)
-				this.images[i] = ImageIO.read(new File("Images/Dice" + i + ".png"));
+				this.images[i] = ImageIO.read(new File("Images/Puzzle" + i + ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -59,7 +59,7 @@ public class VuePuzzle extends Vue<BoxPuzzle> {
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 2;
-		maPioche.add(new JLabel("Pioche de " + joueur.toString()), c);
+		maPioche.add(new JLabel("Pioche"), c);
 		c.gridwidth = 1;/*
 		for (int i = 0; i < joueur.getMain().size(); i++) {
 			LienDomino l1 = (LienDomino) ((BoxPuzzle) joueur.getMain().get(i)).getLien();
