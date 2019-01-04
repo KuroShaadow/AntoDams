@@ -22,9 +22,10 @@ public class BoxPuzzle extends Box {
 
 		for (int i = 0; i < 4; i++) {
 			int[] cote = sensToCoordonnees(i);
-			int[] c = rotation(cote[0], cote[1], x, y, sens);
-			if (!box2[i].estPosable(tableau, c[0], c[1], sens))
-				return false;
+			int[] c = rotation(x+cote[0], y+cote[1], x, y, sens);
+			if (x + c[0] > 0 && y + c[1] > 0 && x + c[0] < tableau.length && y + c[1] < tableau[0].length)
+				if (!box2[i].estPosable(tableau, c[0], c[1], sens))
+					return false;
 		}
 		return true;
 	}

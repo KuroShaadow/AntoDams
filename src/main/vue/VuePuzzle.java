@@ -64,6 +64,7 @@ public class VuePuzzle extends Vue<BoxPuzzle> {
 			c.insets = new Insets(10, 0, 0, 0);
 			this.maMain.add(ligne);
 			this.maPioche.add(ligne, c);
+			ligne.addMouseListener(controleur);
 			c.gridx = 0;
 			c.gridy = joueur.getMain().size() + 1;
 			this.maPioche.add(piocher, c);
