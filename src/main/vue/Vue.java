@@ -21,7 +21,7 @@ public abstract class Vue<T> extends JFrame {
 	protected Planche<T> planche;
 	protected Controleur<T> controleur;
 	protected JPanel table;
-	protected ImagePan[][] plateau;
+	protected JPanel[][] plateau;
 	protected JPanel maPioche;
 	protected ArrayList<JPanel> maMain;
 	protected JButton piocher;
@@ -134,7 +134,7 @@ public abstract class Vue<T> extends JFrame {
 		return this.maMain;
 	}
 
-	public ImagePan[][] getPlateau() {
+	public JPanel[][] getPlateau() {
 		return this.plateau;
 	}
 
