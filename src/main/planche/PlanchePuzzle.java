@@ -1,10 +1,8 @@
 package main.planche;
 
 import main.Joueur;
-import main.box.BoxDomino;
 import main.box.BoxPuzzle;
 import main.lien.Lien;
-import main.lien.LienDomino;
 import main.lien.LienPuzzle;
 
 public class PlanchePuzzle extends Planche<BoxPuzzle> {
