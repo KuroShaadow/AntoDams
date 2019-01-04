@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -24,6 +25,7 @@ public abstract class Vue<T> extends JFrame {
 	protected ImagePan[][] plateau;
 	protected JPanel maPioche;
 	protected ArrayList<JPanel> maMain;
+	protected JButton piocher;
 
 	public Vue(Planche<T> planche, String titre) {
 		this.planche = planche;
@@ -36,11 +38,13 @@ public abstract class Vue<T> extends JFrame {
 
 		// on créé la table et le plateau
 		initTable();
+		
+		this.piocher = new JButton("Piocher");
 
 		// on initialise la pioche du joueur sous fomre graphique
 		this.maPioche = new JPanel();
 		updateVue();
-
+		
 		// separation de la table et de la pioche
 		this.getContentPane().setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -147,5 +151,9 @@ public abstract class Vue<T> extends JFrame {
 				if(plateau[i][j] == e.getComponent())
 					return true;
 		return false;
+	}
+	
+	public JButton getPiocher() {
+		return this.piocher;
 	}
 }

@@ -81,6 +81,10 @@ public class VueDomino extends Vue<BoxDomino> {
 			c.insets = new Insets(10, 0, 0, 0);
 			this.maMain.add(ligne);
 			this.maPioche.add(ligne, c);
+			piocher.addMouseListener(controleur);
+			c.gridx = 0;
+			c.gridy = joueur.getMain().size() + 1;
+			this.maPioche.add(piocher, c);
 		}
 		SwingUtilities.updateComponentTreeUI(this);
 	}
