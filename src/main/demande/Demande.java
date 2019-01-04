@@ -3,7 +3,7 @@ package main.demande;
 import java.util.Scanner;
 
 public class Demande {
-	
+
 	protected Integer nb;
 	protected Integer x;
 	protected Integer y;
@@ -13,6 +13,7 @@ public class Demande {
 
 	public Demande() {
 
+		System.out.println("nouvelle demande");
 		this.nb = null;
 		this.x = null;
 		this.y = null;
@@ -47,18 +48,22 @@ public class Demande {
 	}
 
 	public void setNb(Integer nb) {
+		System.out.println("nb = " + nb);
 		this.nb = nb;
 	}
 
 	public void setX(Integer x) {
+		System.out.println("x = " + x);
 		this.x = x;
 	}
 
 	public void setY(Integer y) {
+		System.out.println("y = " + y);
 		this.y = y;
 	}
 
 	public void setSens(Integer sens) {
+		System.out.println("sens = " + sens);
 		this.sens = sens;
 	}
 

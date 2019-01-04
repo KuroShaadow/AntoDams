@@ -16,6 +16,7 @@ public class ControleurDomino extends Controleur<BoxDomino> {
 	protected void tour(int nb) {
 		// si il ne peut pas jouer il pioche et passe
 		//
+		vue.updateVue();
 
 		Joueur<BoxDomino> joueur = modele.getJoueur(nb);
 		while (true) {
@@ -28,7 +29,6 @@ public class ControleurDomino extends Controleur<BoxDomino> {
 				break;
 			}
 		}
-		vue.updateVue();
 	}
 
 	private void premierTour() {

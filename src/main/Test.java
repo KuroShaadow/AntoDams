@@ -19,7 +19,8 @@ class Test {
 		BoxDomino dom3 = new BoxDomino(new LienDomino(1), new LienDomino(2));
 		BoxDomino dom4 = new BoxDomino(new LienDomino(0), new LienDomino(0));
 
-		poseDomino(plancheDomino, dom1, 10, 11, 1, "dom1");
+		dom1.pose(plancheDomino.getTableau(), 10, 11, 1);
+		System.out.println("dom1");
 		poseDomino(plancheDomino, dom2, 12, 11, 2, "dom2");
 		poseDomino(plancheDomino, dom3, 13, 12, 1, "dom3");
 		poseDomino(plancheDomino, dom4, 11, 10, 1, "dom4");
