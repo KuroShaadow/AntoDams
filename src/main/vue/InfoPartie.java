@@ -41,7 +41,6 @@ public class InfoPartie extends JFrame {
 			this.planche.addJoueur(new Joueur<BoxDomino>(nomJoueur2.getText()));
 
 			VueDomino vue = new VueDomino(this.planche);
-			vue.updateVue();
 
 			new Thread(new Runnable() {
 				public void run() {

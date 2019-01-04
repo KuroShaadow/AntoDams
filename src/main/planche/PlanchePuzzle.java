@@ -8,7 +8,7 @@ import main.lien.LienPuzzle;
 public class PlanchePuzzle extends Planche<BoxPuzzle> {
 
 	public PlanchePuzzle() {
-		super(3, 3);
+		super(3*3, 3*3);
 
 		this.pioche.add(new BoxPuzzle(new Lien[] {new Lien(), new LienPuzzle(0, true), new LienPuzzle(0, false), new Lien()}));
 		this.pioche.add(new BoxPuzzle(new Lien[] {new Lien(), new LienPuzzle(0, false), new LienPuzzle(1, true), new LienPuzzle(0, false)}));

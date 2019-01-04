@@ -34,6 +34,8 @@ public class ControleurPuzzle extends Controleur<BoxPuzzle> {
 
 		while (!modele.getPioche().isEmpty())
 			modele.getJoueurs().get(0).pioche(modele.pioche());
+		
+		vue.updateVue();
 
 		// chaque joueur joue a tour de role
 		while (true) {

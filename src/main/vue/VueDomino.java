@@ -43,11 +43,10 @@ public class VueDomino extends Vue<BoxDomino> {
 		for (int i = 0; i < this.plateau.length; i++) {
 			for (int j = 0; j < this.plateau[0].length; j++) {
 				Box box = this.planche.getTableau()[i][j];
-				if (box != null) {
+				if (box != null)
 					((ImagePan) this.plateau[i][j]).setImage(images[((LienDomino) box.getLien()).getNombre()]);
-				} else {
+				else
 					((ImagePan) this.plateau[i][j]).removeImage();
-				}
 			}
 		}
 		Joueur<BoxDomino> joueur = this.planche.getJoueur(this.planche.getJoueurCourant());
