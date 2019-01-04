@@ -86,11 +86,6 @@ public class VueDomino extends Vue<BoxDomino> {
 			c.gridy = joueur.getMain().size() + 1;
 			this.maPioche.add(piocher, c);
 		}
-		JButton piocher = new JButton("Piocher");
-		piocher.addActionListener(event -> {
-			joueur.pioche(this.planche.pioche());
-			this.updateVue();
-		});
 		c.gridx = 0;
 		c.gridy = joueur.getMain().size() + 1;
 		this.maPioche.add(piocher, c);
