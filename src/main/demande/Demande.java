@@ -6,6 +6,7 @@ public class Demande {
 	protected Integer x;
 	protected Integer y;
 	protected Integer sens;
+	protected boolean pioche;
 
 	public Demande() {
 
@@ -14,10 +15,11 @@ public class Demande {
 		this.x = null;
 		this.y = null;
 		this.sens = null;
+		this.pioche = false;
 	}
 
 	public boolean isComplet() {
-		return nb != null && x != null && y != null && sens != null;
+		return nb != null && x != null && y != null && sens != null || pioche;
 	}
 
 	public Integer getNb() {
@@ -34,6 +36,10 @@ public class Demande {
 
 	public Integer getSens() {
 		return sens;
+	}
+
+	public boolean getPioche() {
+		return pioche;
 	}
 
 	public void setNb(Integer nb) {
@@ -54,6 +60,11 @@ public class Demande {
 	public void setSens(Integer sens) {
 		System.out.println("sens = " + sens);
 		this.sens = sens;
+	}
+
+	public void setPioche(boolean pioche) {
+		System.out.println("pioche = " + pioche);
+		this.pioche = pioche;
 	}
 
 }

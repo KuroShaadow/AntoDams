@@ -32,8 +32,9 @@ public class Box {
 			return false;
 		for (int i = 0; i < 4; i++) {
 			int[] c = sensToCoordonnees(i);
-			if (tableau[x + c[0]][y + c[1]] != null && !estAjoutable(tableau[x + c[0]][y + c[1]]))
-				return false;
+			if (x + c[0] > 0 && y + c[1] > 0 && x + c[0] < tableau.length && y + c[1] < tableau[0].length)
+				if (tableau[x + c[0]][y + c[1]] != null && !estAjoutable(tableau[x + c[0]][y + c[1]]))
+					return false;
 		}
 		return true;
 	}
@@ -41,9 +42,11 @@ public class Box {
 	public void pose(Box[][] tableau, int x, int y, int sens) {
 		for (int i = 0; i < 4; i++) {
 			int[] c = sensToCoordonnees(i);
-			if (tableau[x + c[0]][y + c[1]] != null) {
-				tableau[x + c[0]][y + c[1]].ajout();
-				ajout();
+			if (x + c[0] > 0 && y + c[1] > 0 && x + c[0] < tableau.length && y + c[1] < tableau[0].length) {
+				if (tableau[x + c[0]][y + c[1]] != null) {
+					tableau[x + c[0]][y + c[1]].ajout();
+					ajout();
+				}
 			}
 		}
 		setSens(sens);

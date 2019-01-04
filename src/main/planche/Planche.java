@@ -21,20 +21,15 @@ public abstract class Planche<T> {
 		joueurs.add(joueur);
 	}
 
+	public boolean estPiochable() {
+		return pioche != null && pioche.size() != 0;
+	}
+
 	public T pioche() {
 		int nb = (int) (Math.random() * pioche.size());
 		T box = pioche.get(nb);
 		pioche.remove(nb);
 		return box;
-	}
-
-	public void affiche() {
-		for (int i = 0; i < tableau.length; i++) {
-			for (int j = 0; j < tableau.length; j++)
-				System.out.print(tableau[j][i] == null ? "." : tableau[j][i].getLien());
-
-			System.out.println();
-		}
 	}
 
 	public Joueur<T> getJoueur(int nb) {
@@ -71,9 +66,5 @@ public abstract class Planche<T> {
 
 	public Box[][] getTableau() {
 		return tableau;
-	}
-
-	public int getCourant() {
-		return this.joueurCourant;
 	}
 }

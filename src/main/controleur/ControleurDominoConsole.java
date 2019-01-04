@@ -1,16 +1,36 @@
 package main.controleur;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import main.Joueur;
 import main.box.BoxDomino;
 import main.demande.Demande;
-import main.vue.Vue;
+import main.planche.Planche;
+import main.vue.VueDominoConsole;
 
-public class ControleurDomino extends Controleur<BoxDomino> {
+public class ControleurDominoConsole {
 
-	public ControleurDomino(Vue<BoxDomino> vue) {
-		super(vue);
+	protected Planche<BoxDomino> modele;
+	protected VueDominoConsole vue;
+
+	protected Demande demande;
+	private static Scanner sc = new Scanner(System.in);
+
+	public ControleurDominoConsole(VueDominoConsole vue) {
+		this.vue = vue;
+		this.modele = vue.getPlanche();
+	}
+
+	protected void attente() {
+
+		while (!demande.isComplet()) {
+
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+			}
+		}
 	}
 
 	protected void tour(int nb) {
@@ -50,6 +70,41 @@ public class ControleurDomino extends Controleur<BoxDomino> {
 				.pose(modele.getTableau(), 15, 15, 1);
 
 		vue.updateVue();
+	}
+
+	private int lire(String text) {
+		System.out.print(text + " : ");
+		int lu = sc.nextInt();
+		sc.nextLine();
+		return lu;
+	}
+
+	public void envoi() {
+
+		int nb = -1;
+		while (nb < 0 || nb >= modele.getJoueur(modele.getJoueurCourant()).getMain().size())
+			nb = lire("nb");
+		demande.setNb(nb);
+
+		int x = -1;
+		while (x < 0 || x >= modele.getTableau().length)
+			x = lire("x");
+		demande.setX(x);
+
+		int y = -1;
+		while (y < 0 || y >= modele.getTableau()[0].length)
+			y = lire("y");
+		demande.setY(y);
+
+		int sens = -1;
+		while (sens < 0 || sens > 1)
+			sens = lire("sens");
+		demande.setSens(sens);
+
+		int pioche = -1;
+		while (pioche < 0 || pioche > 1)
+			pioche = lire("pioche");
+		demande.setPioche(pioche == 1);
 	}
 
 	public void partie() {

@@ -64,9 +64,8 @@ public abstract class Controleur<T> implements MouseListener {
 				else
 					demande = new Demande();
 			}
-		} else if (component == vue.getPiocher()) {
-			vue.getPlanche().getJoueur(vue.getPlanche().getCourant()).pioche(vue.getPlanche().pioche());
-			vue.updateVue();
+		} else if (component == vue.getPiocher() && modele.estPiochable()) {
+			demande.setPioche(true);
 		}
 	}
 
