@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import main.Joueur;
 import main.box.Box;
@@ -81,5 +82,6 @@ public class VueDomino extends Vue<BoxDomino> {
 			this.maMain.add(ligne);
 			this.maPioche.add(ligne, c);
 		}
+		SwingUtilities.updateComponentTreeUI(this);
 	}
 }
