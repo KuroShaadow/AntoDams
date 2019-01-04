@@ -16,8 +16,9 @@ public class BoxDomino extends Box {
 	public boolean estPosable(Box[][] tableau, int x, int y, int sens) {
 		boolean b = false;
 		for (int[] cote : autourDesDeux(x, y, sens))
-			if (tableau[cote[0]][cote[1]] != null)
-				b = true;
+			if (cote[0] > 0 && cote[1] > 0 && cote[0] < tableau.length && cote[1] < tableau[0].length)
+				if (tableau[cote[0]][cote[1]] != null)
+					b = true;
 		if (!b)
 			return false;
 		int[] c = sensToCoordonnees(sens);
@@ -82,8 +83,8 @@ public class BoxDomino extends Box {
 	}
 
 	public static int max(ArrayList<BoxDomino> boxDominos) {
-		
-		if (boxDominos == null || boxDominos.size()==0)
+
+		if (boxDominos == null || boxDominos.size() == 0)
 			throw new RuntimeException();
 
 		int max = 0;

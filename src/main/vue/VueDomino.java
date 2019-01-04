@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -54,7 +53,7 @@ public class VueDomino extends Vue<BoxDomino> {
 			}
 			System.out.println();
 		}
-		Joueur<BoxDomino> joueur = this.planche.getJoueur(this.planche.getCourant());
+		Joueur<BoxDomino> joueur = this.planche.getJoueur(this.planche.getJoueurCourant());
 		maPioche.removeAll();
 		initMaMain();
 		maPioche.setLayout(new GridBagLayout());
@@ -85,9 +84,6 @@ public class VueDomino extends Vue<BoxDomino> {
 			c.gridy = joueur.getMain().size() + 1;
 			this.maPioche.add(piocher, c);
 		}
-		c.gridx = 0;
-		c.gridy = joueur.getMain().size() + 1;
-		this.maPioche.add(piocher, c);
 		SwingUtilities.updateComponentTreeUI(this);
 	}
 }

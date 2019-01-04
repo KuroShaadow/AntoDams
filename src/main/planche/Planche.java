@@ -21,6 +21,10 @@ public abstract class Planche<T> {
 		joueurs.add(joueur);
 	}
 
+	public boolean estPiochable() {
+		return pioche != null && pioche.size() != 0;
+	}
+
 	public T pioche() {
 		int nb = (int) (Math.random() * pioche.size());
 		T box = pioche.get(nb);
@@ -71,9 +75,5 @@ public abstract class Planche<T> {
 
 	public Box[][] getTableau() {
 		return tableau;
-	}
-
-	public int getCourant() {
-		return this.joueurCourant;
 	}
 }
