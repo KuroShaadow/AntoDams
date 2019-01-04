@@ -45,13 +45,10 @@ public class VueDomino extends Vue<BoxDomino> {
 				Box box = this.planche.getTableau()[i][j];
 				if (box != null) {
 					this.plateau[i][j].setImage(images[((LienDomino) box.getLien()).getNombre()]);
-					System.out.print(box.getLien());
 				} else {
 					this.plateau[i][j].removeImage();
-					System.out.print(".");
 				}
 			}
-			System.out.println();
 		}
 		Joueur<BoxDomino> joueur = this.planche.getJoueur(this.planche.getJoueurCourant());
 		maPioche.removeAll();

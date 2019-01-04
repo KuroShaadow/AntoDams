@@ -43,7 +43,6 @@ public abstract class Vue<T> extends JFrame {
 
 		// on initialise la pioche du joueur sous fomre graphique
 		this.maPioche = new JPanel();
-		updateVue();
 
 		// separation de la table et de la pioche
 		this.getContentPane().setLayout(new GridBagLayout());

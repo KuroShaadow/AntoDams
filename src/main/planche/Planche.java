@@ -32,15 +32,6 @@ public abstract class Planche<T> {
 		return box;
 	}
 
-	public void affiche() {
-		for (int i = 0; i < tableau.length; i++) {
-			for (int j = 0; j < tableau.length; j++)
-				System.out.print(tableau[j][i] == null ? "." : tableau[j][i].getLien());
-
-			System.out.println();
-		}
-	}
-
 	public Joueur<T> getJoueur(int nb) {
 		return joueurs.get(nb);
 	}
