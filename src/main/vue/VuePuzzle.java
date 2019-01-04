@@ -56,22 +56,18 @@ public class VuePuzzle extends Vue<BoxPuzzle> {
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 0;
-		maPioche.add(new JLabel("Pioche de " + joueur.toString()), c);
+		maPioche.add(new JLabel("Pioche"), c);
 		for (int i = 0; i < joueur.getMain().size(); i++) {
 			JPanel ligne = new CasePuzzle(joueur.getMain().get(i), images);
 			c.gridx = 0;
 			c.gridy = i + 1;
 			c.insets = new Insets(10, 0, 0, 0);
+			c.ipadx = 30;
+			c.ipady = 30;
 			this.maMain.add(ligne);
 			this.maPioche.add(ligne, c);
 			ligne.addMouseListener(controleur);
-			c.gridx = 0;
-			c.gridy = joueur.getMain().size() + 1;
-			this.maPioche.add(piocher, c);
 		}
-		c.gridx = 0;
-		c.gridy = joueur.getMain().size() + 1;
-		this.maPioche.add(piocher, c);
 		SwingUtilities.updateComponentTreeUI(this);
 	}
 }
