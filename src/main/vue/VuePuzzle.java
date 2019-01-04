@@ -2,14 +2,16 @@ package main.vue;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
-import main.box.Box;
+import main.Joueur;
 import main.box.BoxPuzzle;
 import main.controleur.ControleurPuzzle;
 import main.lien.LienPuzzle;
@@ -23,14 +25,15 @@ public class VuePuzzle extends Vue<BoxPuzzle> {
 	public VuePuzzle(PlanchePuzzle planche) {
 		super(planche, "Table puzzle");
 
-		this.images = new BufferedImage[9];
+		this.images = new BufferedImage[2];
 		try {
 			for (int i = 0; i < this.images.length; i++)
 				this.images[i] = ImageIO.read(new File("Images/Puzzle" + i + ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		
+		this.planche.addJoueur(new Joueur<BoxPuzzle>("joueur"));
 		this.controleur = new ControleurPuzzle(this);
 		ajouteControleur(controleur);
 	}
@@ -39,9 +42,9 @@ public class VuePuzzle extends Vue<BoxPuzzle> {
 	public void updateVue() {
 		for (int i = 0; i < this.plateau.length; i++) {
 			for (int j = 0; j < this.plateau[0].length; j++) {
-				Box box = this.planche.getTableau()[i][j];
+				BoxPuzzle box = (BoxPuzzle) this.planche.getTableau()[i][j];
 				if (box != null) {
-					this.plateau[i][j].setImage(images[((LienPuzzle) box.getLien()).getType()]);
+					CreationCase(box, i, j);
 					System.out.print(box.getLien());
 				} else {
 					this.plateau[i][j].removeImage();
@@ -50,21 +53,34 @@ public class VuePuzzle extends Vue<BoxPuzzle> {
 			}
 			System.out.println();
 		}
+		Joueur<BoxPuzzle> joueur = this.planche.getJoueur(0);
 		maPioche.removeAll();
 		maPioche.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 0;
 		maPioche.add(new JLabel("Pioche"), c);
-		/*
 		for (int i = 0; i < joueur.getMain().size(); i++) {
-			LienDomino l1 = (LienDomino) ((BoxPuzzle) joueur.getMain().get(i)).getLien();
-			LienDomino l2 = (LienDomino) (((BoxPuzzle) joueur.getMain().get(i)).getBox2()).getLien();
-			this.maMain.add(new JPanel[] { new ImagePan(images[l1.getNombre()]),
-					new ImagePan(images[l2.getNombre()]) });
-			for (int j = 0; j < 2; j++) {
-				c.gridx = j;
-				c.gridy = i + 1;
-				this.maPioche.add(this.maMain.get(i)[j], c);
+			
+		}
+		SwingUtilities.updateComponentTreeUI(this);
+	}
+	
+	private void CreationCase(BoxPuzzle box, int i, int j) {
+		this.plateau[i][j].setLayout(new GridLayout(3, 3));
+		for(int k = 0; k < 3; k++) {
+			for(int l = 0; l < 3; l++) {
+				if(k == 0 && l == 1 && box.getBox2()[0] != null)
+					this.plateau[i][j].add(new ImagePan(this.images[((LienPuzzle)box.getBox2()[0].getLien()).getType()]));
+				else if(k == 1 && l == 0 && box.getBox2()[3] != null)
+					this.plateau[i][j].add(new ImagePan(this.images[((LienPuzzle)box.getBox2()[3].getLien()).getType()]));
+				else if(k == 1 && l == 2 && box.getBox2()[1] != null)
+					this.plateau[i][j].add(new ImagePan(this.images[((LienPuzzle)box.getBox2()[1].getLien()).getType()]));
+				else if(k == 2 && l == 1 && box.getBox2()[2] != null)
+					this.plateau[i][j].add(new ImagePan(this.images[((LienPuzzle)box.getBox2()[2].getLien()).getType()]));
+				else
+					this.plateau[i][j].add(new ImagePan());
 			}
-		}*/
+		}
 	}
 }
