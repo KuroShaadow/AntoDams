@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -24,6 +25,7 @@ public abstract class Vue<T> extends JFrame {
 	protected ImagePan[][] plateau;
 	protected JPanel maPioche;
 	protected ArrayList<JPanel> maMain;
+	protected JButton piocher;
 
 	public Vue(Planche<T> planche, String titre) {
 		this.planche = planche;
@@ -147,5 +149,9 @@ public abstract class Vue<T> extends JFrame {
 				if(plateau[i][j] == e.getComponent())
 					return true;
 		return false;
+	}
+
+	public JButton getPiocher() {
+		return this.piocher;
 	}
 }
