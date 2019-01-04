@@ -30,14 +30,13 @@ public class VueDomino extends Vue<BoxDomino> {
 
 		this.images = new BufferedImage[7];
 		try {
-		for (int i = 0; i < this.images.length; i++)
+			for (int i = 0; i < this.images.length; i++)
 				this.images[i] = ImageIO.read(new File("Images/Dice" + i + ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		this.controleur = new ControleurDomino(this);
-		ajouteControleur(controleur);
+		ajouteControleur(new ControleurDomino(this));
 	}
 
 	@Override

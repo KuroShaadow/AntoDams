@@ -20,8 +20,7 @@ public class ControleurPuzzle extends Controleur<BoxPuzzle> {
 			this.demande = new Demande();
 			attente();
 			BoxPuzzle box = joueur.getBox(demande.getNb());
-			if (box.estPosable(modele.getTableau(), demande.getX(), demande.getY(),
-					demande.getSens())) {
+			if (box.estPosable(modele.getTableau(), demande.getX(), demande.getY(), demande.getSens())) {
 				joueur.joue(demande.getNb()).pose(modele.getTableau(), demande.getX(), demande.getY(),
 						demande.getSens());
 				break;

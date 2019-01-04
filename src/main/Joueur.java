@@ -20,18 +20,18 @@ public class Joueur<T> {
 		main.remove(nb);
 		return box;
 	}
-	
+
 	public ArrayList<T> getMain() {
 		return this.main;
 	}
-	
+
 	public T getBox(int nb) {
 		return this.main.get(nb);
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.nom;
 	}
-	
+
 }
