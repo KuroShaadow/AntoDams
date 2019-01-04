@@ -52,7 +52,7 @@ public class Menu extends JFrame {
 			this.setVisible(false);
 
 			PlanchePuzzle planche = new PlanchePuzzle();
-			// InfoPartie partie = new InfoPartie(planche);
+			VuePuzzle vuePuzzle = new VuePuzzle(planche);
 		});
 		this.add(puzzle);
 
