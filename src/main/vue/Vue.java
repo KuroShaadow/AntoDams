@@ -140,24 +140,6 @@ public abstract class Vue<T> extends JFrame {
 		return this.plateau;
 	}
 
-	public int[] getCoordonnees(MouseEvent e) {
-		for (int i = 0; i < plateau.length; i++) {
-			for (int j = 0; j < plateau[0].length; j++) {
-				if (plateau[i][j] == e.getComponent())
-					return new int[] { i, j };
-			}
-		}
-		return null;
-	}
-
-	public boolean contains(MouseEvent e) {
-		for (int i = 0; i < plateau.length; i++)
-			for (int j = 0; j < plateau[0].length; j++)
-				if (plateau[i][j] == e.getComponent())
-					return true;
-		return false;
-	}
-
 	public JButton getPiocher() {
 		return this.piocher;
 	}
