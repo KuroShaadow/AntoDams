@@ -22,7 +22,8 @@ public class InfoPartie extends JFrame {
 	public InfoPartie(PlancheDomino planche) {
 		this.pack();
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.setSize((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+		this.setSize((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(),
+				(int) Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		this.setVisible(true);
 		this.setTitle("Info");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

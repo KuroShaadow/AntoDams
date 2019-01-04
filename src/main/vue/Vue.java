@@ -32,20 +32,20 @@ public abstract class Vue<T> extends JFrame {
 
 		this.setTitle(titre);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.setSize((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+		this.setSize((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// on créé la table et le plateau
 		initTable();
-		
+
 		this.piocher = new JButton("Piocher");
 		piocher.addMouseListener(controleur);
 
 		// on initialise la pioche du joueur sous fomre graphique
 		this.maPioche = new JPanel();
 		updateVue();
-		
+
 		// separation de la table et de la pioche
 		this.getContentPane().setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -63,12 +63,15 @@ public abstract class Vue<T> extends JFrame {
 	}
 
 	protected void ajouteControleur(Controleur<T> controleur) {
+		this.controleur = controleur;
+
 		for (int i = 0; i < this.plateau.length; i++) {
 			for (int j = 0; j < this.plateau[0].length; j++) {
 				plateau[i][j].addMouseListener(controleur);
 			}
 		}
-		this.controleur = controleur;
+		piocher.addMouseListener(controleur);
+
 	}
 
 	public void initTable() {
@@ -102,20 +105,21 @@ public abstract class Vue<T> extends JFrame {
 	}
 
 	public abstract void updateVue();
+
 	public int[] getCoordonnees(Component component) {
-		for(int i = 0; i < plateau.length; i++) {
-			for(int j = 0; j < plateau[0].length; j++) {
-				if(plateau[i][j] == component)
-					return new int[]{i, j};
+		for (int i = 0; i < plateau.length; i++) {
+			for (int j = 0; j < plateau[0].length; j++) {
+				if (plateau[i][j] == component)
+					return new int[] { i, j };
 			}
 		}
 		return null;
 	}
-	
+
 	public boolean contains(Component component) {
-		for(int i = 0; i < plateau.length; i++)
-			for(int j = 0; j < plateau[0].length; j++)
-				if(plateau[i][j] == component)
+		for (int i = 0; i < plateau.length; i++)
+			for (int j = 0; j < plateau[0].length; j++)
+				if (plateau[i][j] == component)
 					return true;
 		return false;
 	}
@@ -127,33 +131,33 @@ public abstract class Vue<T> extends JFrame {
 	public Controleur<T> getControleur() {
 		return controleur;
 	}
-	
+
 	public ArrayList<JPanel> getMain() {
 		return this.maMain;
 	}
-	
+
 	public ImagePan[][] getPlateau() {
 		return this.plateau;
 	}
-	
+
 	public int[] getCoordonnees(MouseEvent e) {
-		for(int i = 0; i < plateau.length; i++) {
-			for(int j = 0; j < plateau[0].length; j++) {
-				if(plateau[i][j] == e.getComponent())
-					return new int[]{i, j};
+		for (int i = 0; i < plateau.length; i++) {
+			for (int j = 0; j < plateau[0].length; j++) {
+				if (plateau[i][j] == e.getComponent())
+					return new int[] { i, j };
 			}
 		}
 		return null;
 	}
-	
+
 	public boolean contains(MouseEvent e) {
-		for(int i = 0; i < plateau.length; i++)
-			for(int j = 0; j < plateau[0].length; j++)
-				if(plateau[i][j] == e.getComponent())
+		for (int i = 0; i < plateau.length; i++)
+			for (int j = 0; j < plateau[0].length; j++)
+				if (plateau[i][j] == e.getComponent())
 					return true;
 		return false;
 	}
-	
+
 	public JButton getPiocher() {
 		return this.piocher;
 	}

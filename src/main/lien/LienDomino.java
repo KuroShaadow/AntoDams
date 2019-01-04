@@ -10,9 +10,9 @@ public class LienDomino extends Lien {
 	public int getNombre() {
 		return this.nombre;
 	}
-	
+
 	@Override
 	public String toString() {
-		return ""+nombre;
+		return "" + nombre;
 	}
 }

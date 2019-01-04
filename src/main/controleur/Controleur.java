@@ -1,5 +1,6 @@
 package main.controleur;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -63,7 +64,7 @@ public abstract class Controleur<T> implements MouseListener {
 				else
 					demande = new Demande();
 			}
-		} else if(component == vue.getPiocher()) {
+		} else if (component == vue.getPiocher()) {
 			vue.getPlanche().getJoueur(vue.getPlanche().getCourant()).pioche(vue.getPlanche().pioche());
 			vue.updateVue();
 		}
@@ -75,10 +76,12 @@ public abstract class Controleur<T> implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
+		e.getComponent().setBackground(new Color(255, 255, 200));
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		e.getComponent().setBackground(new Color(238, 238, 238));
 	}
 
 	@Override
