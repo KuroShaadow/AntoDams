@@ -40,6 +40,7 @@ public abstract class Vue<T> extends JFrame {
 		initTable();
 		
 		this.piocher = new JButton("Piocher");
+		piocher.addMouseListener(controleur);
 
 		// on initialise la pioche du joueur sous fomre graphique
 		this.maPioche = new JPanel();
