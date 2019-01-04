@@ -43,6 +43,8 @@ public abstract class Vue<T> extends JFrame {
 		this.maPioche = new JPanel();
 		updateVue();
 
+		this.piocher = new JButton("Piocher");
+		
 		// separation de la table et de la pioche
 		this.getContentPane().setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();

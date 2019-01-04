@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -36,7 +35,6 @@ public class VueDomino extends Vue<BoxDomino> {
 			e.printStackTrace();
 		}
 		
-		this.piocher = new JButton("Piocher");
 		this.controleur = new ControleurDomino(this);
 		ajouteControleur(controleur);
 	}
