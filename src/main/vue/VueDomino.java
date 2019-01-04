@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -82,6 +83,14 @@ public class VueDomino extends Vue<BoxDomino> {
 			this.maMain.add(ligne);
 			this.maPioche.add(ligne, c);
 		}
+		JButton piocher = new JButton("Piocher");
+		piocher.addActionListener(event -> {
+			joueur.pioche(this.planche.pioche());
+			this.updateVue();
+		});
+		c.gridx = 0;
+		c.gridy = joueur.getMain().size() + 1;
+		this.maPioche.add(piocher, c);
 		SwingUtilities.updateComponentTreeUI(this);
 	}
 }
